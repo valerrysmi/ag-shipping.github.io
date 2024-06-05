@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+    <title>Форма регистрации документов</title>
+</head>
+
+<body>
+    <div id="main">
+        <h1>Форма регистрации документов</h1>
+        <p>Вам необходимо заполнить форму регистрации документов.</p>
+        <p>Вам предстоит ввести данные о водителе, автомобиле, грузе и данные получателя.</p>
+        <h3>Будьте внимательны!</h3>
+        <p>При закрытии формы, данные не сохраняются. При этом вы можете скрывать само приложение Telegram и переходить в другие приложения, в таком случае уже заполненные поля сохранятся. </p>
+    </div>
+
+    <div id="div_form_driver">
+    <form id="form_driver">
+        <h2>Данные отправителя</h2>
+        <p>ФИО водителя:</p>
+        <input type="text" name="driver_full_name" required pattern="[А-Яа-яЁё\s]{0,1000}" placeholder="Фамилия Имя Отчество"/>
+        <p>Серия и номер паспорта водителя:</p>
+        <input type="text" name="driver_passport_1" required pattern="[0-9]{4}" placeholder="0000"/>
+        <input type="text" name="driver_passport_2" required pattern="[0-9]{6}" placeholder="000000"/>
+        <p>Дата рождения водителя:</p>
+        <input type="date" name="driver_bday" required>
+        <p>Дата выдачи паспорта водителя:</p>
+        <input type="date" name="driver_passport_day" required>
+        <p>Код подразделения паспорта водителя:</p>
+        <input type="text" name="driver_passport_code" required pattern="[0-9]{6}" placeholder="000000">
+        <p>Адрес регистрации водителя:</p>
+        <input type="text" name="driver_home" required pattern="[А-Яа-яЁё\s,.]{0,1000}" placeholder="Страна, регион, город, улица, дом, квартира">
+    </form>
+    </div>
+
+    <div id="div_form_category" class="choosing-group">
+    <form id="form_category">
+        <h2>Категория груза</h2>
+        <p>Выберите подходящую категорию.</p>
+        <p>После выбора в форму добавятся поля с необходимыми документами.</p>
+        <div class="choosing-option">
+            <input type="radio" id="category_car" name="ask_category" value="form_car" onclick="myOnClick('form_car', 'form_trailer')">
+            <label for="old_driver">Автомобиль (легковой или грузовой)</label>
+        </div>
+        <div class="choosing-option">
+            <input type="radio" id="category_trailer" name="ask_category" value="form_trailer" onclick="myOnClick('form_trailer', 'form_car')">
+            <label for="new_driver">Полуприцеп</label>
+        </div>
+    </form>
+    </div>
+
+    <div id="div_form_car">
+    <form id="form_car" style="display: none;">
+        <h2>Данные об автомобиле</h2>
+        <p>Марка автомобиля:</p>
+        <input type="text" name="car_model" required pattern="[A-Za-zА-Яа-яЁё\s\d]{0,1000}" placeholder="Марка автомобиля" />
+        <p>Государственный номер автомобиля:</p>
+        <input type="text" name="car_number" required pattern="[A-Za-zА-Яа-яЁё\s\d]{0,1000}" placeholder="A000AA 77" />
+        <p>Цвет автомобиля:</p>
+        <input type="text" name="car_color" required pattern="[А-Яа-яЁё\s]{0,1000}" placeholder="Цвет автомобиля" />
+        <p>Серия и номер СТС:</p>
+        <input type="text" name="car_sts" required pattern="[\d\s]{2,3}[A-Za-zА-Яа-яЁё\s]{2,3}[\d\s]{6,7}" placeholder="78 OT 757747" />
+    </form>
+    </div>
+
+    <div id="div_form_trailer">
+    <form id="form_trailer" style="display: none;">
+        <h2>Данные о полуприцепе</h2>
+        <p>Марка полуприцепа:</p>
+        <input type="text" name="trailer_model" required pattern="[A-Za-zА-Яа-яЁё\s\d]{0,1000}" placeholder="Марка полуприцепа" />
+        <p>Государственный номер полуприцепа:</p>
+        <input type="text" name="trailer_number" required pattern="[A-Za-zА-Яа-яЁё\s\d]{0,1000}" placeholder="AA0000 77" />
+    </form>
+    </div>
+
+    <div id="div_form_ask_driver" class="choosing-group">
+    <form id="form_ask_driver">
+        <h2>Данные получателя</h2>
+        <p>Выберите, кто будет встречать транспортное средство в порту.</p>
+        <p>При выборе варианта "Другой человек" в форму добавятся поля для документов получателя.</p>
+        <div class="choosing-option">
+            <input type="radio" id="old_driver" name="ask_driver" value="old_driver" onclick="myOnClick('', 'form_new_driver')">
+            <label for="old_driver">Отправитель</label>
+        </div>
+        <div class="choosing-option">
+            <input type="radio" id="new_driver" name="ask_driver" value="form_new_driver" onclick="myOnClick('form_new_driver', '')">
+            <label for="new_driver">Другой человек</label>
+        </div>
+    </form>
+    </div>
+
+    <div id="div_form_new_driver">
+    <form id="form_new_driver" style="display: none;">
+        <h2>Данные получателя</h2>
+        <p>ФИО водителя:</p>
+        <input type="text" name="new_driver_full_name" required pattern="[А-Яа-яЁё\s]{0,1000}" placeholder="Фамилия Имя Отчество" />
+        <p>Серия и номер паспорта водителя:</p>
+        <input type="text" name="new_driver_passport_1" required pattern="[0-9]{4}" placeholder="0000" />
+        <input type="text" name="new_driver_passport_2" required pattern="[0-9]{6}" placeholder="000000" />
+        <p>Дата рождения водителя:</p>
+        <input type="date" name="new_driver_bday" required>
+        <p>Дата выдачи паспорта водителя:</p>
+        <input type="date" name="new_driver_passport_day" required>
+        <p>Код подразделения паспорта водителя:</p>
+        <input type="text" name="new_driver_passport_code" required pattern="[0-9]{6}" placeholder="000000">
+        <p>Адрес регистрации водителя:</p>
+        <input type="text" name="new_driver_home" required pattern="[А-Яа-яЁё\s,.]{0,1000}" placeholder="Страна, регион, город, улица, дом, квартира">
+    </form>
+    </div>
+
+    <div id="finish">
+        <h1>Конец формы регистрации документов</h1>
+        <h3>Спасибо за заполнение формы!</h3> 
+        <p>Проверьте корректность заполнения всех полей.</p>
+        <p>Для отправки данных, нажмите кнопку ниже.</p>
+        <button type="button" class="button-style" onclick="finishForm()">Отправить форму</button>
+    </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

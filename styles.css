@@ -1,0 +1,90 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+#main, #finish {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    /* text-align: center; */
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    color: #007bff;
+}
+
+form {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* text-align: center; */
+}
+
+legend {
+    font-weight: bold;
+    color: #007bff;
+}
+
+input,
+select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.invalid-style {
+    background-color: #ff000020;
+}
+
+.invalid-style-radio {
+    background-color: #ff000020;
+}
+
+.button-style {
+    display: inline;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+
+}
+
+.choosing-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.choosing-option {
+    display: flex;
+    /* align-items: center; */
+    text-align: left;
+    margin-right: 10px;
+}
+
+.choosing-option input {
+    width: 20px;
+    margin-right: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
